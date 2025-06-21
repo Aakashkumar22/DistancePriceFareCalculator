@@ -33,8 +33,8 @@ Prerequisites
 ### setup
 bash
 # Clone repository
-git clone https://github.com/yourusername/django-ride-pricing.git
-cd django-ride-pricing
+git clone https://github.com/Aakashkumar22/DistancePriceFareCalculator.git
+cd django-DjangoProject2
 
 # Create virtual environment
 python -m venv venv
