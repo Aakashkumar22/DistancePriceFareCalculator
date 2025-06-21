@@ -17,8 +17,13 @@ from django.contrib import admin
 from django.urls import path
 
 from django.urls import path
-from .views import CalculatePriceView
+from DistancePriceCalculation.views import CalculatePriceView
+
+from django.contrib import admin
+from django.urls import path
+from DistancePriceCalculation.views import CalculatePriceView
 
 urlpatterns = [
-    path('calculate-price/', CalculatePriceView.as_view(), name='calculate-price'),
+    path('admin/', admin.site.urls),
+    path('api/calculate-price/', CalculatePriceView.as_view(), name='calculate-price'),
 ]

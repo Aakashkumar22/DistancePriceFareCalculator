@@ -4,16 +4,19 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
 from .models import PricingConfig, DayBasedPricing
+from decimal import Decimal
 import math
+
 
 
 class CalculatePriceView(View):
     def get(self, request):
         # Get parameters from request
-        distance = float(request.GET.get('distance'))
-        ride_time = float(request.GET.get('ride_time'))  # in minutes
-        waiting_time = float(request.GET.get('waiting_time'))  # in minutes
-        day_of_week = int(request.GET.get('day_of_week'))
+        # Convert all inputs to Decimal for consistency
+        distance = Decimal(request.GET.get('distance', 0))
+        ride_time = Decimal(request.GET.get('ride_time', 0))
+        waiting_time = Decimal(request.GET.get('waiting_time', 0))
+        day_of_week = int(request.GET.get('day_of_week', 0))
 
         try:
             config = PricingConfig.objects.get(is_active=True)
